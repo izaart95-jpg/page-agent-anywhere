@@ -372,7 +372,7 @@ ensureAgentDownloaded().then(() => {
     });
 
     console.log(`WebSocket proxy server running on ws://localhost:${PORT}`);
-    console.log(`Bookmarklet: javascript:(function(){var s=new WebSocket('ws://localhost:${PORT}');s.onopen=function(){s.send(JSON.stringify({type:'getScript',file:'client'}))};s.onmessage=function(e){var d=JSON.parse(e.data);if(d.type==='clientScript'){var el=document.createElement('script');el.textContent=d.content;document.head.appendChild(el);s.close()}}})();`);
+    console.log(`Bookmarklet: javascript:(function(){var s=new WebSocket('ws://localhost:8000');s.onopen=function(){s.send(JSON.stringify({type:'getScript',file:'client'}))};s.onmessage=function(e){var d=JSON.parse(e.data);if(d.type==='clientScript'){var b=new Blob([d.content],{type:'application/javascript'});var u=URL.createObjectURL(b);var el=document.createElement('script');el.src=u;document.head.appendChild(el);s.close()}}})();`);
 
 }).catch((err) => {
     console.error('Failed to start server:', err);
