@@ -1,4 +1,4 @@
-# Page Agent
+# Page-Agent-Anywhere
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://page-agent.github.io/assets/readme/banner-dark.png">
@@ -14,7 +14,11 @@
 [![Chrome Web Store Rating](https://img.shields.io/chrome-web-store/rating/akldabonmimlicnjlflnapfeklbfemhj?style=flat-square&label=chrome%20rating)](https://chromewebstore.google.com/detail/page-agent-ext/akldabonmimlicnjlflnapfeklbfemhj)
 [![GitHub stars](https://img.shields.io/github/stars/alibaba/page-agent.svg)](https://github.com/alibaba/page-agent)
 
-The GUI Agent Living in Your Webpage. One script gives any web page its own AI agent.
+> ⚡ **Page-Agent-Anywhere** is a fork of Page-Agent that replaces direct browser requests with a local WebSocket proxy (`ws-server.js`).
+>
+> This removes browser CORS restrictions, allowing the agent to run on virtually any website. The tradeoff is that a small local server must be running while using the agent.
+The GUI Agent That Works on Any Website. A lightweight local WebSocket proxy removes browser CORS limitations, allowing Page Agent to run anywhere.
+
 
 <a href="https://trendshift.io/repositories/22551?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-22551" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/22551" alt="alibaba%2Fpage-agent | Trendshift" width="180"/></a>
 
@@ -28,15 +32,42 @@ The GUI Agent Living in Your Webpage. One script gives any web page its own AI a
 
 ---
 
+## Why this fork?
+
+The original Page-Agent communicates directly from the browser.
+
+Many modern websites use strict CORS and security policies that prevent Page-Agent from working correctly.
+
+Page-Agent-Anywhere solves this by introducing a lightweight local WebSocket proxy (`ws-server.js`) that:
+
+- downloads the official Page-Agent runtime automatically
+- injects it into any webpage
+- proxies API requests through your local machine
+- bypasses browser CORS restrictions
+- requires no browser extension
+
+Tradeoffs:
+
+| Original | Page-Agent-Anywhere |
+|----------|----------------------|
+| No local server | Requires local WebSocket server |
+| Limited by CORS | Works on virtually any website |
+| Simpler setup | More powerful and reliable |
+
+---
+
 ## ✨ Features
 
-- **🎯 Easy integration**
-    - No need for `browser extension` / `python` / `headless browser`.
-    - Just in-page javascript. Everything happens in your web page.
+- **🌍 Works on virtually any website**
+    - Local WebSocket proxy bypasses browser CORS limitations.
+- **⚡ Automatic runtime loading**
+    - Downloads the official Page-Agent runtime automatically on first launch.
 - **📖 Text-based DOM manipulation**
     - No screenshots. No multi-modal LLMs or special permissions needed.
 - **🧠 Bring your own LLMs**
     - Works with most mainstream models, including locally deployed ones. See [supported models](https://alibaba.github.io/page-agent/docs/features/models).
+- **🔌 Lightweight local proxy**
+    - Uses a single Node.js WebSocket server instead of browser extensions.
 - **🐙 Optional [chrome extension](https://alibaba.github.io/page-agent/docs/features/chrome-extension) for multi-page tasks.**
     - And an [MCP Server (Beta)](https://alibaba.github.io/page-agent/docs/features/mcp-server) to control it from outside
 
@@ -50,25 +81,27 @@ The GUI Agent Living in Your Webpage. One script gives any web page its own AI a
 
 ## 🚀 Quick Start
 
-### One-line integration
+### 1. Install dependencies
 
-Fastest way to try PageAgent with our free Demo LLM:
-
-```html
-<script
-    src="https://cdn.jsdelivr.net/npm/page-agent@1.11.0/dist/iife/page-agent.demo.js"
-    crossorigin="anonymous"
-></script>
+```bash
+npm install ws
 ```
 
-> **⚠️ For technical evaluation only.** This demo CDN uses our free [testing LLM API](https://alibaba.github.io/page-agent/docs/features/models#free-testing-api). By using it, you agree to its [terms](https://github.com/alibaba/page-agent/blob/main/docs/terms-and-privacy.md).
+### 2. Start the proxy server
 
-| Mirrors | URL                                                                                 |
-| ------- | ----------------------------------------------------------------------------------- |
-| Global  | https://cdn.jsdelivr.net/npm/page-agent@1.11.0/dist/iife/page-agent.demo.js         |
-| China   | https://registry.npmmirror.com/page-agent/1.11.0/files/dist/iife/page-agent.demo.js |
+```bash
+node ws-server.js
+```
 
-Add `?autoInit=false` to load the script without creating the demo agent automatically. You can then instantiate it with `new window.PageAgent(...)`.
+On first launch the server automatically downloads the latest Page-Agent runtime.
+
+### 3. Open any website
+
+Run the bookmarklet printed in the terminal.
+
+The bookmarklet connects to the local WebSocket server, injects Page-Agent, and routes all API requests through the proxy.
+
+No browser extension is required.
 
 ### NPM Installation
 
