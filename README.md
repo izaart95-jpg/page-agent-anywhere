@@ -81,13 +81,18 @@ Tradeoffs:
 
 ## 🚀 Quick Start
 
-### 1. Install dependencies
+### 1. Download JavaScript file
+```bash
+mkdir server && cd server
+curl -O https://raw.githubusercontent.com/izaart95-jpg/page-agent-anywhere/refs/heads/main/ws-server.js
+```
+### 2. Install dependencies
 
 ```bash
 npm install ws
 ```
 
-### 2. Start the proxy server
+### 3. Start the proxy server
 
 ```bash
 node ws-server.js
@@ -95,7 +100,7 @@ node ws-server.js
 
 On first launch the server automatically downloads the latest Page-Agent runtime.
 
-### 3. Open any website
+### 4. Open any website
 
 Run the bookmarklet printed in the terminal.
 
