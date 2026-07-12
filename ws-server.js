@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-const SCRIPT_URL = 'https://registry.npmmirror.com/page-agent/1.11.0/files/dist/iife/page-agent.demo.js?lang=en-US';
+const SCRIPT_URL = 'https://cdn.jsdelivr.net/npm/page-agent@1.12.1/dist/iife/page-agent.demo.js?lang=en-US';
 const AGENT_SCRIPT_PATH = path.join(__dirname, 'page-agent.js');
 const API_URL = 'https://page-ag-testing-ohftxirgbn.cn-shanghai.fcapp.run/chat/completions';
 const PORT = 8000;                                                                                                                                                                                                                                                              // ── Script download ──────────────────────────────────────────────────────────
