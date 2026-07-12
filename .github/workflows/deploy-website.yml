@@ -1,4 +1,4 @@
-name: Deploy Demo
+name: Deploy Website
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: page-agent-trusted
     permissions:
       contents: read
       pages: write
@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build demo
+      - name: Build website
         run: npm run build:website
 
       - name: Setup Pages

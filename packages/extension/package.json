@@ -1,7 +1,7 @@
 {
     "name": "@page-agent/ext",
     "private": true,
-    "version": "1.11.0",
+    "version": "1.12.1",
     "type": "module",
     "scripts": {
         "dev": "wxt",
@@ -10,12 +10,12 @@
         "postinstall": "wxt prepare"
     },
     "devDependencies": {
-        "@radix-ui/react-hover-card": "^1.1.18",
+        "@radix-ui/react-hover-card": "^1.1.19",
         "@radix-ui/react-icons": "^1.3.2",
         "@radix-ui/react-label": "^2.1.11",
         "@radix-ui/react-separator": "^1.1.11",
         "@radix-ui/react-slot": "^1.3.0",
-        "@radix-ui/react-switch": "^1.3.2",
+        "@radix-ui/react-switch": "^1.3.3",
         "@tailwindcss/vite": "^4.3.2",
         "@types/chrome": "^0.2.2",
         "@types/react": "^19.2.17",
@@ -24,7 +24,7 @@
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "idb": "^8.0.3",
-        "lucide-react": "^1.23.0",
+        "lucide-react": "^1.24.0",
         "motion": "^12.42.2",
         "next-themes": "^0.4.6",
         "react": "^19.2.7",
@@ -38,10 +38,10 @@
         "wxt": "^0.20.27"
     },
     "dependencies": {
-        "@page-agent/core": "1.11.0",
-        "@page-agent/llms": "1.11.0",
-        "@page-agent/page-controller": "1.11.0",
-        "@page-agent/ui": "1.11.0",
+        "@page-agent/core": "1.12.1",
+        "@page-agent/llms": "1.12.1",
+        "@page-agent/page-controller": "1.12.1",
+        "@page-agent/ui": "1.12.1",
         "ai-motion": "^0.4.8",
         "chalk": "^5.6.2"
     },
